@@ -13,6 +13,7 @@ public class Program {
 
         //addObject(em);
         //findById(em,4);
+        excludeObject(em,4);
 
        em.close();
        emf.close();
@@ -31,5 +32,11 @@ public class Program {
         Pessoa pessoa = em.find(Pessoa.class,id);
         System.out.println(pessoa);
         System.out.println("findById finished!");
+    }
+    public static void excludeObject(EntityManager em, Integer id){
+        em.getTransaction().begin();
+        em.remove(em.find(Pessoa.class,id));
+        em.getTransaction().commit();
+        System.out.println("Object excluded!");
     }
 }
