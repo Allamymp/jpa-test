@@ -10,9 +10,9 @@ public class Program {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
         EntityManager em = emf.createEntityManager();
-        Pessoa pessoa = em.find(Pessoa.class,2);
-        System.out.println(pessoa);
+
         //addObject(em);
+        //findById(em,4);
 
        em.close();
        emf.close();
@@ -26,5 +26,10 @@ public class Program {
         em.getTransaction().commit();
         System.out.println("add finished!");
 
+    }
+    public static void findById(EntityManager em, Integer id){
+        Pessoa pessoa = em.find(Pessoa.class,id);
+        System.out.println(pessoa);
+        System.out.println("findById finished!");
     }
 }
